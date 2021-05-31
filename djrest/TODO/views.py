@@ -32,6 +32,10 @@ class TodoModelViewSet(ModelViewSet):
         serializer.data[0]['active'] = False
         pprint.pprint(serializer.data[0]['active'])
 
+        t = Todo.objects.get(pk=kwargs['pk'])
+        t.active = False
+        t.save()
+
  #       serializer.update(self, serializer.data[0], f)
         return Response(serializer.data)
 
