@@ -26,17 +26,14 @@ class TodoModelViewSet(ModelViewSet):
     serializer_class = Todoserializer
     pagination_class = TodoLimitOffsetPagination
     filterset_class = TodoFilter
-    def destroy(self, request, *args, **kwargs):  # Я был Близок, протыкался два дня, так ничего и не получилось.
+    def destroy(self, request, *args, **kwargs):
         todo = Todo.objects.filter(id=kwargs['pk'])
         serializer = Todoserializer(todo, many=True)
         serializer.data[0]['active'] = False
         pprint.pprint(serializer.data[0]['active'])
-
         t = Todo.objects.get(pk=kwargs['pk'])
         t.active = False
         t.save()
-
- #       serializer.update(self, serializer.data[0], f)
         return Response(serializer.data)
 
 
