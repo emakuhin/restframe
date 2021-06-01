@@ -17,14 +17,14 @@ class TodoLimitOffsetPagination(LimitOffsetPagination):
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = Projectserializer
-    pagination_class = ProjectLimitOffsetPagination
+#    pagination_class = ProjectLimitOffsetPagination
     filterset_class = ProjectFilter
 
 
 class TodoModelViewSet(ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = Todoserializer
-    pagination_class = TodoLimitOffsetPagination
+#    pagination_class = TodoLimitOffsetPagination
     filterset_class = TodoFilter
     def destroy(self, request, *args, **kwargs):
         todo = Todo.objects.filter(id=kwargs['pk'])
