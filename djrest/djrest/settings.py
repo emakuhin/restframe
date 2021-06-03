@@ -28,9 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
-   "http://localhost:3000",
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://0.0.0.0:3000',
 ]
-AUTH_USER_MODEL = 'users.User'
+
 
 # Application definition
 
@@ -48,6 +50,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
